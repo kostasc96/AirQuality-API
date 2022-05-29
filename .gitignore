@@ -2,6 +2,5 @@
 *.idea
 *.DS_Store
  __pycache__/
-*.gz
 *.dtd
 Lib/

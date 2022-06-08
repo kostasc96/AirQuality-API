@@ -12,11 +12,9 @@ class Model3:
         self.accuracy_model3a = acc
         self.model3a = load_model("models3/model1.h5")
 
-
     def update_model3b(self, acc):
         self.accuracy_model3b = acc
         self.model3b = load_model("models3/model2.h5")
-
 
     def get_model3a(self):
         return self.model3a

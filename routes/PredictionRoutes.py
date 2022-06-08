@@ -281,13 +281,3 @@ def model2a():
 @route1.route('/model2b')
 def model2b():
     return jsonify(2)
-
-
-@route1.route('/model3a')
-def model3a():
-    return jsonify(3)
-
-
-@route1.route('/model3b')
-def model3b():
-    return jsonify(3)

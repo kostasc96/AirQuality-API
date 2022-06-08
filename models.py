@@ -38,3 +38,9 @@ class Model:
 
     def update_model3b(self, acc):
         self.model3.update_model3b(acc)
+
+    def get_accuracy_2a(self):
+        return self.model2.get_accuracy_model2a()
+
+    def get_accuracy_2b(self):
+        return self.model2.get_accuracy_model2b()

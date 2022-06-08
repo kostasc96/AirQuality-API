@@ -10,12 +10,12 @@ class Model2:
 
     def update_model2a(self, acc):
         self.accuracy_model2a = acc
-        self.model2a = load_model("models2/model1.h5")
+        self.model2a = load_model("models3/model1.h5")
 
 
     def update_model2b(self, acc):
         self.accuracy_model2b = acc
-        self.model2b = load_model("models2/model2.h5")
+        self.model2b = load_model("models3/model2.h5")
 
 
     def get_model2a(self):

@@ -21,6 +21,24 @@ def pm10_index(val):
         return 4
 
 
+def update_model2a(acc):
+    if acc > model.get_accuracy_2a():
+        model.update_model2a(acc)
+
+
+def update_model2b(acc):
+    if acc > model.get_accuracy_2b():
+        model.update_model2b(acc)
+
+
+def update_model3a(acc):
+    model.update_model3a(acc)
+
+
+def update_model3b(acc):
+    model.update_model3b(acc)
+
+
 @route1.route('/model1a')
 def model1a():
     return jsonify(1)

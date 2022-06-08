@@ -2,10 +2,12 @@ from flask import jsonify
 from flask import Blueprint
 from models import Model
 from scalers.scalers import scaler1b
+from predictions import Prediction
 
 route1 = Blueprint('route1', __name__)
 
 model = Model()
+prediction = Prediction()
 
 
 def pm10_index(val):
@@ -267,7 +269,8 @@ def model1b():
     return_list = []
     for l in preds[0]:
         return_list.append(pm10_index(l[0]))
-    return jsonify(return_list)
+    prediction.update_neasmirni(return_list)
+    return jsonify(prediction.get_prediction(3))
 
 
 @route1.route('/model2a')

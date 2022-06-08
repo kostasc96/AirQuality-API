@@ -1,19 +1,21 @@
 from keras.models import load_model
 
 
-model1a = load_model("models/model1.h5")
-model1b = load_model("models/model2.h5")
+class Model1:
+    def __init__(self):
+        self.model1a = load_model("models/model1.h5")
+        self.model1b = load_model("models/model2.h5")
 
-def update_model1a():
-    model1a = load_model("models/model1.h5")
-
-
-def update_model1b():
-    model1b = load_model("models/model2.h5")
+    def update_model1a(self):
+        self.model1a = load_model("models/model1.h5")
 
 
-def get_model1a():
-    return model1a
+    def update_model1b(self):
+        self.model1b = load_model("models/model2.h5")
 
-def get_model1b():
-    return model1b
+
+    def get_model1a(self):
+        return self.model1a
+
+    def get_model1b(self):
+        return self.model1b

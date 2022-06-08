@@ -1,6 +1,6 @@
 from flask import jsonify
 from flask import Blueprint
-from model1 import get_model1b
+from models import model1
 from scalers.scalers import scaler1b
 
 route1 = Blueprint('route1', __name__)
@@ -242,7 +242,7 @@ def model1b():
         [ 8.00000000e+00,  0.00000000e+00, -1.34042553e+00,
           1.92307692e+00, -2.11764706e+00,  6.50000000e-01,
          -2.63157895e+00]]]
-    pred = get_model1b().predict(tmpDs)
+    pred = model1.get_model1b().predict(tmpDs)
     preds = scaler1b.inverse_transform(pred.reshape(-1, 1)).reshape(pred.shape)
     return_list = []
     for l in preds[0]:

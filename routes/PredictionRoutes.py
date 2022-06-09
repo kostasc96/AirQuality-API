@@ -1,12 +1,12 @@
 from flask import jsonify
 from flask import Blueprint
-from models import Model
+from models import ModelAirQuality
 from scalers.scalers import scaler1b
 from predictions import Prediction
 
 route1 = Blueprint('route1', __name__)
 
-model = Model()
+model = ModelAirQuality(60)
 prediction = Prediction()
 
 

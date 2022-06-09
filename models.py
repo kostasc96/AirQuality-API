@@ -1,11 +1,11 @@
 from base_model import BaseModel
 
 
-class Model:
-    def __init__(self):
-        self.model1 = BaseModel("models")
-        self.model2 = BaseModel("models2")
-        self.model3 = BaseModel("models3")
+class ModelAirQuality:
+    def __init__(self, initial_accuracy):
+        self.model1 = BaseModel("models", initial_accuracy)
+        self.model2 = BaseModel("models2", initial_accuracy)
+        self.model3 = BaseModel("models3", initial_accuracy)
 
     def get_model(self, model_ver):
         model = self.get_model_ver(model_ver)

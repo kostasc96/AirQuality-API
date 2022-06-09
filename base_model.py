@@ -2,11 +2,11 @@ from keras.models import load_model
 
 
 class BaseModel:
-    def __init__(self, model_base_path):
+    def __init__(self, model_base_path, acc):
         self.model_a = load_model(f'{model_base_path}/model1.h5')
         self.model_b = load_model(f'{model_base_path}/model2.h5')
-        self.accuracy_model_a = 60
-        self.accuracy_model_b = 60
+        self.accuracy_model_a = acc
+        self.accuracy_model_b = acc
 
     def update_model_a(self, acc, model_path):
         self.accuracy_model_a = acc

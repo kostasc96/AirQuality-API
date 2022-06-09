@@ -1,12 +1,13 @@
 from flask import jsonify
 from flask import Blueprint
 from models import ModelAirQuality
-from scalers.scalers import scaler1b
+from scalers.scalers import ScalerDNN
 from predictions import Prediction
 
 route1 = Blueprint('route1', __name__)
 
 model = ModelAirQuality(60)
+scalers = ScalerDNN("scalers")
 prediction = Prediction()
 
 
@@ -265,7 +266,7 @@ def model1b():
                1.92307692e+00, -2.11764706e+00, 6.50000000e-01,
                -2.63157895e+00]]]
     pred = model.get_model("1b").predict(tmpDs)
-    preds = scaler1b.inverse_transform(pred.reshape(-1, 1)).reshape(pred.shape)
+    preds = scalers.get_scalers("1b").inverse_transform(pred.reshape(-1, 1)).reshape(pred.shape)
     return_list = []
     for l in preds[0]:
         return_list.append(pm10_index(l[0]))

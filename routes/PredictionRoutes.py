@@ -3,43 +3,13 @@ from flask import Blueprint
 from models import ModelAirQuality
 from scalers.scalers import ScalerDNN
 from predictions import Prediction
+from util import utils
 
 route1 = Blueprint('route1', __name__)
 
 model = ModelAirQuality(60)
 scalers = ScalerDNN("scalers")
 prediction = Prediction()
-
-
-def pm10_index(val):
-    if val <= 25.0:
-        return 0
-    elif 26.0 <= val <= 50.0:
-        return 1
-    elif 51.0 <= val <= 90.0:
-        return 2
-    elif 91.0 <= val <= 180.0:
-        return 3
-    else:
-        return 4
-
-
-def update_model2a(acc):
-    if acc > model.get_accuracy_2a():
-        model.update_model2a(acc)
-
-
-def update_model2b(acc):
-    if acc > model.get_accuracy_2b():
-        model.update_model2b(acc)
-
-
-def update_model3a(acc):
-    model.update_model3a(acc)
-
-
-def update_model3b(acc):
-    model.update_model3b(acc)
 
 
 @route1.route('/model1a')
@@ -269,7 +239,7 @@ def model1b():
     preds = scalers.get_scalers("1b").inverse_transform(pred.reshape(-1, 1)).reshape(pred.shape)
     return_list = []
     for l in preds[0]:
-        return_list.append(pm10_index(l[0]))
+        return_list.append(utils["pm10_index"](l[0]))
     prediction.update_neasmirni(return_list)
     return jsonify(prediction.get_prediction(3))
 

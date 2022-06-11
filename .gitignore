@@ -4,3 +4,4 @@
  __pycache__/
 *.dtd
 Lib/
+Include/site/python3.7/greenlet/

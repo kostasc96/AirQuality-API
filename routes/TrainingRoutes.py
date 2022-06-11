@@ -8,5 +8,5 @@ route2 = Blueprint('route2', __name__)
 
 
 @route2.route('/online')
-async def online_training():  #aioflask install
+async def online_training():
     return jsonify({"result":"connection successful"})

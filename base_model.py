@@ -1,10 +1,13 @@
+import os
 from keras.models import load_model
 
 
+path = 'C:/Users/HP/Documents/AirQualPrediction/'
+
 class BaseModel:
     def __init__(self, model_base_path, acc):
-        self.model_a = load_model(f'{model_base_path}/model1.h5')
-        self.model_b = load_model(f'{model_base_path}/model2.h5')
+        self.model_a = load_model(os.path.join(path, f'{model_base_path}/model1.h5'))
+        self.model_b = load_model(os.path.join(path, f'{model_base_path}/model2.h5'))
         self.accuracy_model_a = acc
         self.accuracy_model_b = acc
 

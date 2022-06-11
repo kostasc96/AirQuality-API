@@ -1,10 +1,12 @@
+import os
 import joblib
 
+path = 'C:/Users/HP/Documents/AirQualPrediction/'
 
 class ScalerDNN:
     def __init__(self, base_path):
-        self.scaler1a = joblib.load(f'{base_path}/scaler1a.gz')
-        self.scaler1b = joblib.load(f'{base_path}/scaler1b.gz')
+        self.scaler1a = joblib.load(os.path.join(path, f'{base_path}/scaler1a.gz'))
+        self.scaler1b = joblib.load(os.path.join(path, f'{base_path}/scaler1b.gz'))
 
     def get_scaler(self, ver):
         scaler_fn = self.get_scalers(ver)

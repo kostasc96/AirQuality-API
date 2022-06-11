@@ -1,10 +1,12 @@
 from flask import jsonify, Response
 from flask import Blueprint
-from flask import request
+from clients.cassandra import get_cassandra_client
+
+session = get_cassandra_client('localhost', 9042, 'airquality')
 
 route2 = Blueprint('route2', __name__)
 
 
 @route2.route('/online')
-def online_training():
-    return jsonify(4)
+async def online_training():  #aioflask install
+    return jsonify({"result":"connection successful"})

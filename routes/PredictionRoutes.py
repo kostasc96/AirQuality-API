@@ -8,20 +8,28 @@ route1 = Blueprint('route1', __name__)
 
 @route1.route('/model1a')
 def model1a():
-    return jsonify(1)
-
-
-@route1.route('/model1b', methods = ['POST'])
-def model1b():
-    tmpDs = request.get_json()['val']
-    tmpDs = meteo.update_meteo_value(3, tmpDs)
-    pred = model.get_model("3b").predict(tmpDs)
+    req = request.get_json()
+    tmpDs = meteo.update_meteo_value(req['station_id'], req['val'])
+    pred = model.get_model("1a").predict(tmpDs)
     preds = scalers.get_scaler(True, "b").inverse_transform(pred.reshape(-1, 1)).reshape(pred.shape)
     return_list = []
     for l in preds[0]:
         return_list.append(utils["pm10_index"](l[0]))
     prediction.update_neasmirni(return_list)
-    return jsonify(prediction.get_prediction(3))
+    return jsonify(prediction.get_prediction(req['station_id']))
+
+
+@route1.route('/model1b', methods = ['POST'])
+def model1b():
+    req = request.get_json()
+    tmpDs = meteo.update_meteo_value(req['station_id'], req['val'])
+    pred = model.get_model("1b").predict(tmpDs)
+    preds = scalers.get_scaler(False, "b").inverse_transform(pred.reshape(-1, 1)).reshape(pred.shape)
+    return_list = []
+    for l in preds[0]:
+        return_list.append(utils["pm10_index"](l[0]))
+    prediction.update_neasmirni(return_list)
+    return jsonify(prediction.get_prediction(req['station_id']))
 
 
 @route1.route('/model2a')

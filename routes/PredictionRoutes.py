@@ -15,8 +15,8 @@ def model1a():
 def model1b():
     tmpDs = request.get_json()['val']
     tmpDs = meteo.update_meteo_value(3, tmpDs)
-    pred = model.get_model("1b").predict(tmpDs)
-    preds = scalers.get_scalers("1b").inverse_transform(pred.reshape(-1, 1)).reshape(pred.shape)
+    pred = model.get_model("3b").predict(tmpDs)
+    preds = scalers.get_scaler(True, "b").inverse_transform(pred.reshape(-1, 1)).reshape(pred.shape)
     return_list = []
     for l in preds[0]:
         return_list.append(utils["pm10_index"](l[0]))

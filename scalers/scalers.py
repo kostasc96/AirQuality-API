@@ -8,9 +8,15 @@ class ScalerDNN:
         self.scaler3a = joblib.load(f'{base_path}/scaler3a.gz')
         self.scaler3b = joblib.load(f'{base_path}/scaler3b.gz')
 
-    def get_scaler(self, ver):
-        scaler_fn = self.get_scalers(ver)
-        return scaler_fn
+    def get_scaler(self, grid, scaler_type):
+        if scaler_type == "a" and grid is True:
+            return self.get_scalers("3a")
+        elif scaler_type == "a" and grid is False:
+            return self.get_scalers("1a")
+        elif scaler_type == "b" and grid is True:
+            return self.get_scalers("3b")
+        else:
+            return self.get_scalers("1b")
 
     def get_scalers(self, ver):
         if ver == "1a":

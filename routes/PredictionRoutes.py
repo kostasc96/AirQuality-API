@@ -15,7 +15,7 @@ def model1a():
     return_list = []
     for l in preds[0]:
         return_list.append(utils["pm10_index"](l[0]))
-    prediction.update_neasmirni(return_list)
+    prediction.update_station_pred(req['station_id'], return_list)
     return jsonify(prediction.get_prediction(req['station_id']))
 
 
@@ -28,7 +28,7 @@ def model1b():
     return_list = []
     for l in preds[0]:
         return_list.append(utils["pm10_index"](l[0]))
-    prediction.update_neasmirni(return_list)
+    prediction.update_station_pred(req['station_id'], return_list)
     return jsonify(prediction.get_prediction(req['station_id']))
 
 

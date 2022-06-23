@@ -15,6 +15,36 @@ class Prediction:
         self.liosia = []
         self.patision = []
 
+    def update_station_pred(self, station_id, pred):
+        if station_id == 1:
+            return self.update_pireus(pred)
+        elif station_id == 2:
+            return self.update_agiaparaskevi(pred)
+        elif station_id == 3:
+            return self.update_neasmirni(pred)
+        elif station_id == 4:
+            return self.update_lykovrisi(pred)
+        elif station_id == 5:
+            return self.update_thrakomakedones(pred)
+        elif station_id == 6:
+            return self.update_aristotelous(pred)
+        elif station_id == 7:
+            return self.update_athens(pred)
+        elif station_id == 8:
+            return self.update_elefsina(pred)
+        elif station_id == 9:
+            return self.update_koropi(pred)
+        elif station_id == 10:
+            return self.update_liosia(pred)
+        elif station_id == 11:
+            return self.update_marousi(pred)
+        elif station_id == 12:
+            return self.update_patision(pred)
+        elif station_id == 13:
+            return self.update_geoponiki(pred)
+        else:
+            return self.update_peristeri(pred)
+
     def update_marousi(self, pred):
         self.marousi = pred
 

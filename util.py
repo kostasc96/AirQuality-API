@@ -46,6 +46,7 @@ def convert_pm10_index(predicts, test):
         for j in range(len(predicts[i])):
             predicts[i][j] = pm10_index(predicts[i][j])
             test[i][j] = pm10_index(test[i][j])
+    return predicts, test
 
 
 @util
@@ -73,3 +74,28 @@ def create_xy(series, series2, window_size, prediction_horizon, shuffle=False):
     x = np.array(x)
     y = np.array(y)
     return x, y
+
+
+@util
+def get_time(tmp):
+    return tmp[11:13]
+
+
+@util
+def get_season(tmp):
+    if tmp == 'Spring':
+        return '1'
+    elif tmp == 'Spring/Summer':
+        return '2'
+    elif tmp == 'Summer':
+        return '3'
+    elif tmp == 'Summer/Autumn':
+        return '4'
+    elif tmp == 'Autumn':
+        return '5'
+    elif tmp == 'Autumn/Winter':
+        return '6'
+    elif tmp == 'Winter/Spring':
+        return '7'
+    else:
+        return '8'

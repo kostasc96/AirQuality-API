@@ -8,3 +8,7 @@ model = ModelAirQuality(60)
 scalers = ScalerDNN("scalers")
 prediction = Prediction()
 meteo = Meteo()
+window = 72
+horizon = 48
+epochs = 2
+batch_size = 32

@@ -77,6 +77,15 @@ def create_xy(series, series2, window_size, prediction_horizon, shuffle=False):
 
 
 @util
+def create_x(series, window_size, shuffle=False):
+    x = []
+    for i in range(0, len(series)):
+        x.append(series[i:(i + window_size)])
+    x = np.array(x)
+    return x
+
+
+@util
 def get_time(tmp):
     return tmp[11:13]
 

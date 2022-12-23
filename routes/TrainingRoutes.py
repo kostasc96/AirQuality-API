@@ -10,7 +10,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from util import utils
 from initiators import scalers, window, horizon, model, epochs, batch_size
 
-session = get_cassandra_client('localhost', 9042, 'airquality')
+# session = get_cassandra_client('localhost', 9042, 'airquality')
 
 route2 = Blueprint('route2', __name__)
 

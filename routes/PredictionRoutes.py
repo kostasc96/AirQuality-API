@@ -52,11 +52,11 @@ def model1b():
     req = request.get_json()
     req_val = req["val"]
     station_id = req["station_id"]
-    df = pd.read_csv("routes/NeaSmirni.csv", sep=',', header=True)
+    df = pd.read_csv("routes/NeaSmirni.csv", sep=',')
     df = df[['station_id','date_time','forecast_tempC','forecast_humidity','forecast_windSpeed','forecast_windDirection','pm10']]
-    new_row = {'station_id': req[0], 'date_time': req[1], 'forecast_tempC': req[2],
-                        'forecast_humidity': req[3], 'forecast_windSpeed': req[4],
-                        'forecast_windDirection': req[5], 'pm10': req[6]}
+    new_row = {'station_id': req_val[0], 'date_time': req_val[1], 'forecast_tempC': req_val[2],
+                        'forecast_humidity': req_val[3], 'forecast_windSpeed': req_val[4],
+                        'forecast_windDirection': req_val[5], 'pm10': req_val[6]}
     df = df.append(new_row, ignore_index=True)
 
     # tmpDs = np.array(meteo.update_meteo_value(req['station_id'], req['val']))
@@ -65,7 +65,7 @@ def model1b():
     #                    'forecast_humidity': tmpDs[:, 3], 'forecast_windSpeed': tmpDs[:, 4],
     #                    'forecast_windDirection': tmpDs[:, 5], 'pm10': tmpDs[:, 6]})
     df['date_time'] = df['date_time'].astype("|S")
-    df['date_time'] = df['date_time'].map(lambda a: utils["get_time"](a))
+    # df['date_time'] = df['date_time'].map(lambda a: utils["get_time"](a))
     df['date_time'] = df['date_time'].astype(int)
     df['forecast_windDirection'] = df['forecast_windDirection'].astype(np.float64)
     df['station_id'] = df['station_id'].astype(int)
